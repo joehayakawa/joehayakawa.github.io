@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Proposal Comparison — Kazakhstan & Kyrgyzstan</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root {
+    --agent1: #2563eb;
+    --agent1-light: #dbeafe;
+    --agent1-bg: #eff6ff;
+    --agent2: #d97706;
+    --agent2-light: #fef3c7;
+    --agent2-bg: #fffbeb;
+    --green: #059669;
+    --red: #dc2626;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 50%, #d4a373 100%);
+    color: white;
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; position: relative; }
+  .hero p { font-size: 1.15rem; opacity: 0.9; position: relative; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* Summary Cards */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: -36px auto 40px;
+    position: relative;
+    z-index: 2;
+  }
+  .summary-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border-top: 4px solid;
+  }
+  .summary-card.agent1 { border-color: var(--agent1); }
+  .summary-card.agent2 { border-color: var(--agent2); }
+  .summary-card h2 { font-size: 1.35rem; margin-bottom: 4px; }
+  .summary-card .subtitle { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 16px; }
+  .summary-card .price { font-size: 2rem; font-weight: 800; margin-bottom: 4px; }
+  .summary-card.agent1 .price { color: var(--agent1); }
+  .summary-card.agent2 .price { color: var(--agent2); }
+  .summary-card .price-note { font-size: 0.85rem; color: var(--gray-500); margin-bottom: 16px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .tag.blue { background: var(--agent1-light); color: var(--agent1); }
+  .tag.amber { background: var(--agent2-light); color: var(--agent2); }
+  .tag.green { background: #d1fae5; color: #065f46; }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .stat { text-align: center; background: var(--gray-50); border-radius: 12px; padding: 12px 8px; }
+  .stat .num { font-size: 1.5rem; font-weight: 800; }
+  .stat .label { font-size: 0.75rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* Section titles */
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 1.6rem; }
+
+  /* Comparison table */
+  .comparison-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
+  }
+  .comparison-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gray-500);
+    border-bottom: 2px solid var(--gray-200);
+    background: var(--gray-50);
+  }
+  .comparison-table thead th:nth-child(2) { color: var(--agent1); }
+  .comparison-table thead th:nth-child(3) { color: var(--agent2); }
+  .comparison-table tbody td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: top;
+    font-size: 0.95rem;
+  }
+  .comparison-table tbody tr:last-child td { border-bottom: none; }
+  .comparison-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--gray-700);
+    white-space: nowrap;
+    width: 180px;
+  }
+  .comparison-table tbody tr:hover { background: var(--gray-50); }
+  .winner { position: relative; }
+  .winner::after {
+    content: '★';
+    color: #f59e0b;
+    margin-left: 6px;
+    font-size: 0.85rem;
+  }
+
+  /* Itinerary timeline */
+  .itinerary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .itinerary-col { position: relative; }
+  .itinerary-col h3 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    color: white;
+  }
+  .itinerary-col.a1 h3 { background: var(--agent1); }
+  .itinerary-col.a2 h3 { background: var(--agent2); }
+
+  .day-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    border-left: 3px solid;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .day-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+  .a1 .day-card { border-color: var(--agent1); }
+  .a2 .day-card { border-color: var(--agent2); }
+  .day-card .day-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .a1 .day-card .day-label { color: var(--agent1); }
+  .a2 .day-card .day-label { color: var(--agent2); }
+  .day-card .day-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .day-card .day-details { font-size: 0.88rem; color: var(--gray-700); }
+  .day-card .day-details li { margin-bottom: 3px; }
+  .day-card .stay { font-size: 0.8rem; color: var(--gray-500); margin-top: 8px; font-style: italic; }
+
+  /* Map */
+  #map {
+    height: 520px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    margin-bottom: 16px;
+    z-index: 1;
+  }
+  .map-legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; font-weight: 600; }
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+
+  /* Pros / Cons */
+  .proscons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .proscons-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .proscons-card h3 { font-size: 1.1rem; margin-bottom: 16px; }
+  .proscons-card.a1 h3 { color: var(--agent1); }
+  .proscons-card.a2 h3 { color: var(--agent2); }
+  .pro, .con { padding: 6px 0; font-size: 0.92rem; display: flex; gap: 8px; align-items: start; }
+  .pro::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .con::before { content: '✗'; color: var(--red); font-weight: 700; flex-shrink: 0; }
+
+  /* Verdict */
+  .verdict {
+    background: white;
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  .verdict h2 { font-size: 1.4rem; margin-bottom: 16px; }
+  .verdict-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+  .verdict-card {
+    padding: 20px;
+    border-radius: 12px;
+    text-align: left;
+  }
+  .verdict-card.a1 { background: var(--agent1-bg); border: 1px solid var(--agent1-light); }
+  .verdict-card.a2 { background: var(--agent2-bg); border: 1px solid var(--agent2-light); }
+  .verdict-card h4 { margin-bottom: 8px; }
+  .verdict-card p { font-size: 0.92rem; color: var(--gray-700); }
+
+  footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--gray-500);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 1.8rem; }
+    .summary-grid, .itinerary-grid, .proscons-grid, .verdict-cards {
+      grid-template-columns: 1fr;
+    }
+    .comparison-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Kazakhstan & Kyrgyzstan Trip</h1>
+  <p>Proposal Comparison — May / June 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- Summary Cards -->
+  <div class="summary-grid">
+    <div class="summary-card agent1">
+      <h2>Agent 1</h2>
+      <div class="subtitle">Almaty-to-Almaty Grand Loop</div>
+      <div class="price">€1,245 <span style="font-size:0.9rem;font-weight:400;color:var(--gray-500)">/person</span></div>
+      <div class="price-note">Final price — all-inclusive</div>
+      <div class="tag-row">
+        <span class="tag blue">9 Days</span>
+        <span class="tag blue">Kazakhstan + Kyrgyzstan</span>
+        <span class="tag green">All-Inclusive</span>
+      </div>
+      <div class="quick-stats">
+        <div class="stat"><div class="num">2</div><div class="label">Countries</div></div>
+        <div class="stat"><div class="num">12+</div><div class="label">Destinations</div></div>
+        <div class="stat"><div class="num">3</div><div class="label">Accommodation Types</div></div>
+        <div class="stat"><div class="num">8</div><div class="label">Dinners Included</div></div>
+      </div>
+    </div>
+    <div class="summary-card agent2">
+      <h2>Agent 2 — Atai</h2>
+      <div class="subtitle">Kyrgyzstan Hiking-Focused</div>
+      <div class="price">~€850 <span style="font-size:0.9rem;font-weight:400;color:var(--gray-500)">/person</span></div>
+      <div class="price-note">Estimated — final quote pending</div>
+      <div class="tag-row">
+        <span class="tag amber">9 Days</span>
+        <span class="tag amber">Kyrgyzstan Focus</span>
+        <span class="tag green">Hiking-Centric</span>
+      </div>
+      <div class="quick-stats">
+        <div class="stat"><div class="num">1</div><div class="label">Country (main)</div></div>
+        <div class="stat"><div class="num">5+</div><div class="label">Destinations</div></div>
+        <div class="stat"><div class="num">3</div><div class="label">Accommodation Types</div></div>
+        <div class="stat"><div class="num">—</div><div class="label">Meals TBD</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Comparison Table -->
+  <div class="section-title"><span class="icon">⚖️</span> Key Comparisons</div>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Agent 1</th>
+        <th>Agent 2 — Atai</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Price</td>
+        <td>€1,245 / person</td>
+        <td class="winner">~€850 / person (est.)</td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>9 days (24 May – 1 Jun)</td>
+        <td>9 days (23 May – 1 Jun)</td>
+      </tr>
+      <tr>
+        <td>Countries</td>
+        <td class="winner">Kazakhstan + Kyrgyzstan</td>
+        <td>Kyrgyzstan (transit via Kazakhstan)</td>
+      </tr>
+      <tr>
+        <td>Focus</td>
+        <td>Cultural + Nature (balanced)</td>
+        <td>Hiking + Nature (adventure)</td>
+      </tr>
+      <tr>
+        <td>Hiking Intensity</td>
+        <td>Moderate — mix of hikes & sightseeing</td>
+        <td class="winner">High — 2+ days of strong hiking, flexible intensity</td>
+      </tr>
+      <tr>
+        <td>Kazakhstan Sights</td>
+        <td class="winner">Almaty city tour, Charyn Canyon, Kaindy & Kolsai Lakes</td>
+        <td>Almaty transit only</td>
+      </tr>
+      <tr>
+        <td>Kyrgyzstan Depth</td>
+        <td>Karakol, Altyn Arashan, Issyk-Kul, Son Kul, Bishkek</td>
+        <td class="winner">Ala-Archa, Chon-Kemin, Issyk-Kul (3 days), deeper hiking</td>
+      </tr>
+      <tr>
+        <td>Accommodation</td>
+        <td class="winner">Hotels + guesthouses + yurt camp</td>
+        <td>Guesthouses + yurts (+ possible camping)</td>
+      </tr>
+      <tr>
+        <td>Meals</td>
+        <td class="winner">All breakfasts + lunches/dinners included</td>
+        <td>Not specified in detail</td>
+      </tr>
+      <tr>
+        <td>Transport</td>
+        <td>Comfort transfer + 4×4 for off-road</td>
+        <td>4×4 / minivan for 6 pax</td>
+      </tr>
+      <tr>
+        <td>Guide</td>
+        <td>English-speaking guide</td>
+        <td>Driver + English-speaking guide</td>
+      </tr>
+      <tr>
+        <td>Horse Riding</td>
+        <td>Optional in Saty</td>
+        <td class="winner">Included (beginner-friendly)</td>
+      </tr>
+      <tr>
+        <td>Eagle Hunting</td>
+        <td>Demo included (with archery)</td>
+        <td>Possible local experience</td>
+      </tr>
+      <tr>
+        <td>Cultural Sites</td>
+        <td class="winner">Cathedral, Kok Tobe, Dungan Mosque, Burana Tower, Osh Bazaar</td>
+        <td>Minimal — nature-focused</td>
+      </tr>
+      <tr>
+        <td>Yurt Stay</td>
+        <td>1 night yurt camp (Issyk-Kul shore)</td>
+        <td>Optional yurt (multiple nights possible)</td>
+      </tr>
+      <tr>
+        <td>Son Kul Lake</td>
+        <td class="winner">Included (yurt overnight)</td>
+        <td>May be closed in late May — not included</td>
+      </tr>
+      <tr>
+        <td>Quote Status</td>
+        <td class="winner">Final price</td>
+        <td>Estimated — pending final itinerary</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Map Comparison -->
+  <div class="section-title"><span class="icon">🗺️</span> Route Comparison on Map</div>
+  <div id="map"></div>
+  <div class="map-legend">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--agent1)"></div>
+      Agent 1 Route (Blue)
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:var(--agent2)"></div>
+      Agent 2 Route (Amber)
+    </div>
+    <div class="legend-item" style="font-weight:400;color:var(--gray-500);">Click markers for details</div>
+  </div>
+
+  <!-- Itinerary Side-by-Side -->
+  <div class="section-title"><span class="icon">📅</span> Day-by-Day Itinerary</div>
+  <div class="itinerary-grid">
+    <div class="itinerary-col a1">
+      <h3>Agent 1 — Grand Loop</h3>
+
+      <div class="day-card">
+        <div class="day-label">Day 1 — 24 May</div>
+        <div class="day-title">Almaty, Kazakhstan</div>
+        <div class="day-details">
+          <ul>
+            <li>Airport pickup & hotel check-in</li>
+            <li>City tour: Cathedral, old center, Kok Tobe hills</li>
+            <li>Dinner at Navaat restaurant</li>
+          </ul>
+        </div>
+        <div class="stay">Astra Hotel or similar</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 2 — 25 May</div>
+        <div class="day-title">Charyn Canyon → Kaindy & Kolsai Lakes → Saty</div>
+        <div class="day-details">
+          <ul>
+            <li>Walking in Charyn Canyons</li>
+            <li>Hiking to Kaindy Lake & Kolsai Lake</li>
+            <li>Possible horseback riding</li>
+            <li>Dinner by local family</li>
+          </ul>
+        </div>
+        <div class="stay">Kolsay Room Guest House, Saty</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 3 — 26 May</div>
+        <div class="day-title">Border Crossing → Karakol, Kyrgyzstan</div>
+        <div class="day-details">
+          <ul>
+            <li>Black Canyons stop</li>
+            <li>Cross border at Kegen</li>
+            <li>Visit Dungan Mosque & Russian Church</li>
+            <li>Dinner at Dastarkon</li>
+          </ul>
+        </div>
+        <div class="stay">Tagaytay Hotel, Karakol</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 4 — 27 May</div>
+        <div class="day-title">Altyn Arashan Valley</div>
+        <div class="day-details">
+          <ul>
+            <li>Off-road drive to Altyn Arashan gorge</li>
+            <li>Mountain peak Palatka (4773m) views</li>
+            <li>Natural hot springs swimming</li>
+            <li>Dinner with live music</li>
+          </ul>
+        </div>
+        <div class="stay">Tagaytay Hotel, Karakol</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 5 — 28 May</div>
+        <div class="day-title">Jety Oguz → Barskoon → Skazka → Issyk-Kul</div>
+        <div class="day-details">
+          <ul>
+            <li>Drive south shore of Issyk-Kul</li>
+            <li>Jety Oguz Canyons</li>
+            <li>Barskoon Waterfall</li>
+            <li>Skazka (Fairy Tale) Canyons</li>
+          </ul>
+        </div>
+        <div class="stay">Chyrak Yurt Camp (lakeside)</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 6 — 29 May</div>
+        <div class="day-title">Mars Canyons → Son Kul Lake</div>
+        <div class="day-details">
+          <ul>
+            <li>Mars Canyons hiking</li>
+            <li>Eagle hunter demonstration + archery</li>
+            <li>Lunch with hunter's family</li>
+            <li>Arrive at Son Kul Lake</li>
+          </ul>
+        </div>
+        <div class="stay">Yurt Camp at Son Kul</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 7 — 30 May</div>
+        <div class="day-title">32 Parrots Pass → Konorchek → Kemin Valley</div>
+        <div class="day-details">
+          <ul>
+            <li>32 Parrots Pass (3400m) + waterfall</li>
+            <li>Lunch in Kochkor</li>
+            <li>2-hour Konorchek Canyon hike</li>
+            <li>Panoramic hike in Kemin Valley</li>
+          </ul>
+        </div>
+        <div class="stay">Mountain Guest House, Kemin</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 8 — 31 May</div>
+        <div class="day-title">Burana Tower → Bishkek</div>
+        <div class="day-details">
+          <ul>
+            <li>Burana Tower (Silk Road history)</li>
+            <li>Osh Bazaar, Ala Too Square, art gallery</li>
+            <li>Dinner at Navaat restaurant</li>
+          </ul>
+        </div>
+        <div class="stay">Grand Hotel, Bishkek</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 9 — 1 June</div>
+        <div class="day-title">Bishkek → Border → Almaty</div>
+        <div class="day-details">
+          <ul>
+            <li>Cross border at Korday</li>
+            <li>Zeleniy Bazaar visit</li>
+            <li>Dinner & airport transfer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="itinerary-col a2">
+      <h3>Agent 2 — Atai (Hiking-Focused)</h3>
+
+      <div class="day-card">
+        <div class="day-label">Day 1 — 23 May</div>
+        <div class="day-title">Almaty → Bishkek</div>
+        <div class="day-details">
+          <ul>
+            <li>Arrival at Almaty airport</li>
+            <li>Transfer to Bishkek (~4–5 hours)</li>
+            <li>Rest & settle in</li>
+          </ul>
+        </div>
+        <div class="stay">Guesthouse, Bishkek</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Days 2–3 — 24–25 May</div>
+        <div class="day-title">Ala-Archa National Park</div>
+        <div class="day-details">
+          <ul>
+            <li>2 days of strong hiking</li>
+            <li>Waterfalls, glaciers, alpine trails</li>
+            <li>Immersive mountain experience</li>
+          </ul>
+        </div>
+        <div class="stay">Guesthouse near Ala-Archa</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Days 4–5 — 26–27 May</div>
+        <div class="day-title">Chon-Kemin Valley</div>
+        <div class="day-details">
+          <ul>
+            <li>Scenic hikes</li>
+            <li>Beginner horse riding included</li>
+            <li>Optional overnight in yurt</li>
+          </ul>
+        </div>
+        <div class="stay">Yurt / Guesthouse</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Days 6–8 — 28–30 May</div>
+        <div class="day-title">Issyk-Kul (South Side)</div>
+        <div class="day-details">
+          <ul>
+            <li>Canyons & mountain hiking</li>
+            <li>Possible 2-day hike with camping</li>
+            <li>Eagle hunting / local experiences</li>
+            <li>3 full days to explore</li>
+          </ul>
+        </div>
+        <div class="stay">Guesthouse / Yurt / Camping</div>
+      </div>
+
+      <div class="day-card">
+        <div class="day-label">Day 9 — 1 June</div>
+        <div class="day-title">Return to Almaty</div>
+        <div class="day-details">
+          <ul>
+            <li>Transfer back to Almaty</li>
+            <li>Evening flight departure</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pros & Cons -->
+  <div class="section-title"><span class="icon">💡</span> Pros & Considerations</div>
+  <div class="proscons-grid">
+    <div class="proscons-card a1">
+      <h3>Agent 1 — Grand Loop</h3>
+      <div class="pro">Covers both Kazakhstan AND Kyrgyzstan — best of both countries</div>
+      <div class="pro">All-inclusive pricing — no surprises (meals, entrances, 4×4 transfers)</div>
+      <div class="pro">Son Kul Lake included — iconic alpine lake experience</div>
+      <div class="pro">Rich cultural program (mosques, churches, bazaars, Silk Road)</div>
+      <div class="pro">Charyn Canyon & Kolsai Lakes — Kazakhstan's top natural wonders</div>
+      <div class="pro">Eagle hunting demo with archery included</div>
+      <div class="pro">Detailed, day-by-day itinerary with named hotels & restaurants</div>
+      <div class="con">Higher cost (€1,245 vs ~€850)</div>
+      <div class="con">Packed schedule — less downtime / flexibility</div>
+      <div class="con">Two border crossings required</div>
+      <div class="con">More driving, less deep hiking at individual locations</div>
+    </div>
+    <div class="proscons-card a2">
+      <h3>Agent 2 — Atai (Hiking Focus)</h3>
+      <div class="pro">Lower price point (~€850/person)</div>
+      <div class="pro">Deeper hiking focus — ideal for active travelers</div>
+      <div class="pro">More time at each location (2–3 days per area)</div>
+      <div class="pro">Flexible intensity — "we can push it"</div>
+      <div class="pro">Horse riding included (not just optional)</div>
+      <div class="pro">Possible multi-day camping hike</div>
+      <div class="pro">Ala-Archa National Park — world-class alpine hiking near Bishkek</div>
+      <div class="con">Estimated price — final quote still pending</div>
+      <div class="con">Skips Kazakhstan entirely (no Charyn, Kolsai, Almaty tour)</div>
+      <div class="con">Son Kul likely inaccessible in late May</div>
+      <div class="con">Meal plan unclear / not detailed</div>
+      <div class="con">Less detailed itinerary — still a "direction" not final plan</div>
+      <div class="con">Fewer cultural & historical sites</div>
+    </div>
+  </div>
+
+  <!-- Verdict -->
+  <div class="verdict">
+    <h2>Which One is Right for You?</h2>
+    <p style="color:var(--gray-500);max-width:640px;margin:0 auto;">Both are solid 9-day plans. Your choice depends on what kind of trip you want.</p>
+    <div class="verdict-cards">
+      <div class="verdict-card a1">
+        <h4 style="color:var(--agent1);">Choose Agent 1 if you want...</h4>
+        <p>A comprehensive, all-inclusive grand tour covering both countries with rich cultural experiences, iconic landmarks, and a well-defined itinerary with no planning left to chance.</p>
+      </div>
+      <div class="verdict-card a2">
+        <h4 style="color:var(--agent2);">Choose Agent 2 if you want...</h4>
+        <p>A budget-friendly, deep-dive hiking adventure in Kyrgyzstan with flexible intensity, more time in nature, yurt stays, horse riding, and the freedom to push your limits on the trail.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Trip Comparison — Created April 2026
+</footer>
+
+<script>
+const map = L.map('map', { scrollWheelZoom: false }).setView([42.5, 76.5], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+  maxZoom: 18,
+}).addTo(map);
+
+const blueIcon = L.divIcon({
+  className: '',
+  html: `<div style="background:#2563eb;width:14px;height:14px;border-radius:50%;border:2.5px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [14, 14],
+  iconAnchor: [7, 7],
+});
+const amberIcon = L.divIcon({
+  className: '',
+  html: `<div style="background:#d97706;width:14px;height:14px;border-radius:50%;border:2.5px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.3);"></div>`,
+  iconSize: [14, 14],
+  iconAnchor: [7, 7],
+});
+
+// Agent 1 waypoints
+const a1Points = [
+  { lat: 43.238, lng: 76.946, label: 'Day 1: Almaty', desc: 'City tour, Kok Tobe, Cathedral' },
+  { lat: 43.351, lng: 78.983, label: 'Day 2: Charyn Canyon', desc: 'Canyon walk + Kaindy & Kolsai hikes' },
+  { lat: 42.990, lng: 78.315, label: 'Day 2: Kolsai / Saty', desc: 'Night in guest house, horseback' },
+  { lat: 42.487, lng: 78.394, label: 'Day 3: Karakol', desc: 'Border crossing, Dungan Mosque' },
+  { lat: 42.612, lng: 78.578, label: 'Day 4: Altyn Arashan', desc: 'Off-road gorge, hot springs, 4773m views' },
+  { lat: 42.341, lng: 78.228, label: 'Day 5: Jety Oguz', desc: 'Canyons, Barskoon Waterfall, Skazka' },
+  { lat: 42.141, lng: 77.092, label: 'Day 5: Skazka / Yurt Camp', desc: 'Fairy Tale Canyons, lakeside yurt' },
+  { lat: 41.835, lng: 75.150, label: 'Day 6: Son Kul Lake', desc: 'Mars Canyons, eagle hunter, yurt camp' },
+  { lat: 42.180, lng: 75.750, label: 'Day 7: Kochkor / Konorchek', desc: '32 Parrots Pass, canyon hike' },
+  { lat: 42.782, lng: 75.685, label: 'Day 7: Kemin Valley', desc: 'Mountain guest house, panorama hike' },
+  { lat: 42.875, lng: 74.570, label: 'Day 8: Bishkek', desc: 'Burana Tower, Osh Bazaar, Ala Too Sq.' },
+  { lat: 43.238, lng: 76.946, label: 'Day 9: Back to Almaty', desc: 'Border crossing, Zeleniy Bazaar, airport' },
+];
+
+// Agent 2 waypoints
+const a2Points = [
+  { lat: 43.238, lng: 76.946, label: 'Day 1: Almaty (arrival)', desc: 'Arrival, transfer to Bishkek' },
+  { lat: 42.875, lng: 74.570, label: 'Day 1: Bishkek', desc: 'Rest & settle in' },
+  { lat: 42.640, lng: 74.480, label: 'Days 2–3: Ala-Archa NP', desc: '2 days strong hiking — glaciers, waterfalls' },
+  { lat: 42.790, lng: 75.100, label: 'Days 4–5: Chon-Kemin Valley', desc: 'Scenic hikes + horse riding, yurt stay' },
+  { lat: 42.350, lng: 77.000, label: 'Days 6–8: Issyk-Kul South', desc: 'Canyons, mountain hikes, eagle hunting, camping' },
+  { lat: 43.238, lng: 76.946, label: 'Day 9: Return to Almaty', desc: 'Transfer back, evening flight' },
+];
+
+a1Points.forEach(p => {
+  L.marker([p.lat, p.lng], { icon: blueIcon })
+    .addTo(map)
+    .bindPopup(`<strong style="color:#2563eb">${p.label}</strong><br>${p.desc}`);
+});
+
+a2Points.forEach(p => {
+  L.marker([p.lat, p.lng], { icon: amberIcon })
+    .addTo(map)
+    .bindPopup(`<strong style="color:#d97706">${p.label}</strong><br>${p.desc}`);
+});
+
+const a1Latlngs = a1Points.map(p => [p.lat, p.lng]);
+const a2Latlngs = a2Points.map(p => [p.lat, p.lng]);
+
+L.polyline(a1Latlngs, { color: '#2563eb', weight: 3, opacity: 0.7, dashArray: '8 6' }).addTo(map);
+L.polyline(a2Latlngs, { color: '#d97706', weight: 3, opacity: 0.7, dashArray: '8 6' }).addTo(map);
+
+const allPts = [...a1Latlngs, ...a2Latlngs];
+map.fitBounds(L.latLngBounds(allPts).pad(0.1));
+</script>
+
+</body>
+</html>
