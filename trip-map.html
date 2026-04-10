@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyrgyzstan Trip Map — May 2026</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #f5f0e8; color: #1a1a18; }
+
+  .hero { background: #2c3e50; color: white; padding: 40px 32px; text-align: center; }
+  .hero h1 { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+  .hero p { color: rgba(255,255,255,0.7); font-size: 15px; }
+
+  #map { height: 500px; width: 100%; border-bottom: 4px solid #2c3e50; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 16px; background: white; border-bottom: 1px solid #ddd; font-size: 13px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+  .stop { background: white; border-radius: 12px; margin-bottom: 28px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1); }
+  .stop-header { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .stop-day { background: #2c3e50; color: white; border-radius: 8px; padding: 8px 14px; font-weight: 700; font-size: 13px; white-space: nowrap; }
+  .stop-title { font-size: 20px; font-weight: 700; color: #2c3e50; }
+  .stop-subtitle { font-size: 13px; color: #6b6457; margin-top: 2px; }
+  .stop-body { padding: 20px 24px; }
+  .stop-body p { margin-bottom: 12px; line-height: 1.6; }
+  .stop-img { width: 100%; height: 280px; object-fit: cover; }
+  .stop-img-credit { font-size: 11px; color: #999; padding: 6px 24px; background: #fafafa; }
+
+  .route-line { text-align: center; padding: 12px; color: #8b6914; font-size: 20px; letter-spacing: 4px; }
+
+  @media (max-width: 600px) {
+    .stop-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .stop-img { height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Kyrgyzstan — Land of Nomads</h1>
+  <p>May 22 – Jun 2, 2026 · Group of 6 · Classic Highlands Loop</p>
+</div>
+
+<div id="map"></div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#e74c3c"></div> Start/End (Almaty)</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#3498db"></div> Cities & Transit</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#27ae60"></div> Hiking & Nature</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#f39c12"></div> Cultural Experience</div>
+</div>
+
+<div class="container">
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Almaty_Mountains_(149019881).jpeg?width=1200" alt="Almaty skyline with mountains" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Almaty with the Tian Shan mountains · Wikimedia Commons</div>
+    <div class="stop-header">
+      <div class="stop-day">May 23</div>
+      <div><div class="stop-title">Almaty, Kazakhstan</div><div class="stop-subtitle">Arrival · Green Bazaar · Panfilov Park</div></div>
+    </div>
+    <div class="stop-body">
+      <p>Land at midnight, sleep, then explore Kazakhstan's largest city. The Green Bazaar is one of Central Asia's great markets — entire floors of dried fruits, nuts, spices. The wooden Russian Orthodox church in Panfilov Park was built without a single nail in 1907 and survived a 7.7 magnitude earthquake.</p>
+    </div>
+  </div>
+
+  <div class="route-line">↓ · · · 4-5hr border crossing · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ala_Archa_National_Park,_Bishkek,_Kyrgyzstan_-_panoramio.jpg?width=1200" alt="Ala Archa National Park" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Ala Archa National Park · Photo: CyberCop · CC BY 3.0</div>
+    <div class="stop-header">
+      <div class="stop-day">May 24–25</div>
+      <div><div class="stop-title">Bishkek & Ala Archa</div><div class="stop-subtitle">Capital city · Glacier valley hike (16km, moderate)</div></div>
+    </div>
+    <div class="stop-body">
+      <p>Transit through Bishkek, then hit Ala Archa National Park — a dramatic gorge in the Tian Shan range with glacier-fed rivers, ancient fir forests, and snow-capped peaks above 4,000m. Your warm-up hike to the Ak-Sai glacier viewpoint (800m elevation gain, 4-5 hours).</p>
+    </div>
+  </div>
+
+  <div class="route-line">↓ · · · 3hr drive · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Song-Kul,_Kyrgyzstan_(Unsplash).jpg?width=1200" alt="Song Kul Lake with horses and yurts" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Song-Kul Lake, Kyrgyzstan · Unsplash via Wikimedia Commons</div>
+    <div class="stop-header">
+      <div class="stop-day">May 26</div>
+      <div><div class="stop-title">Song-Kul Plateau ⚠️</div><div class="stop-subtitle">3,016m · Nomadic yurt camps · Horse riding · Road may be closed</div></div>
+    </div>
+    <div class="stop-body">
+      <p>This is the Kyrgyzstan you came to see. A vast alpine lake encircled by open steppe — no trees, no fences, just grass, sky, horses, and yurts. Nomadic families bring their livestock here for summer. Sleep in a yurt, drink fermented mare's milk around a dung fire, and watch the Milky Way with zero light pollution.</p>
+    </div>
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Yurt_Camp_in_Song_kol_region.jpg?width=1200" alt="Yurt camp at Song-Kul" onerror="this.style.display='none'" style="border-top: 1px solid rgba(0,0,0,0.07);">
+    <div class="stop-img-credit">Yurt camp at Song-Kul · Wikimedia Commons</div>
+  </div>
+
+  <div class="route-line">↓ · · · 3hr drive south shore · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/KyrgyzEagleHuntsman.jpg?width=1200" alt="Kyrgyz eagle hunter with golden eagle" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Kyrgyz berkutchi (eagle hunter) with golden eagle · Wikimedia Commons</div>
+    <div class="stop-header">
+      <div class="stop-day">May 27</div>
+      <div><div class="stop-title">Bokonbaevo & Issyk-Kul</div><div class="stop-subtitle">Eagle hunting demo · World's 2nd largest alpine lake</div></div>
+    </div>
+    <div class="stop-body">
+      <p>The centre of Kyrgyzstan's living eagle hunting tradition (possibly 6,000 years old). A community-run demo where you see a golden eagle hunt a lure and sit on the hunter's arm. UNESCO Intangible Cultural Heritage. Then sunset on the south shore of Issyk-Kul — 182km long, never freezes despite 1,600m altitude.</p>
+    </div>
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Son-Kol_lake,_Kyrgyzstan_-_panoramio.jpg?width=1200" alt="Issyk-Kul lake region panorama" onerror="this.style.display='none'" style="border-top: 1px solid rgba(0,0,0,0.07);">
+    <div class="stop-img-credit">Lake and mountain panorama, Kyrgyzstan · Wikimedia Commons</div>
+  </div>
+
+  <div class="route-line">↓ · · · 2hr drive · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Dungan_Mosque_in_Karakol_01.jpg?width=1200" alt="Dungan Mosque in Karakol" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Dungan Mosque, Karakol · Wikimedia Commons</div>
+    <div class="stop-header">
+      <div class="stop-day">May 28</div>
+      <div><div class="stop-title">Karakol</div><div class="stop-subtitle">Trekking capital · Dungan mosque · Russian church · Market town</div></div>
+    </div>
+    <div class="stop-body">
+      <p>Your hiking base camp. A city of 75,000 with a Chinese-style mosque built by Muslim Dungans who fled China in the 1870s, and a Russian Orthodox church built entirely from timber without nails — the whole messy history of Central Asia told in two buildings. Easy afternoon hike through Karakol gorge to stretch your legs.</p>
+    </div>
+  </div>
+
+  <div class="route-line">↓ · · · 45min drive · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Horses_alpine_meadow_Kyrgyzstan.jpg?width=1200" alt="Alpine meadow with horses in Kyrgyzstan" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Alpine meadow with horses, Kyrgyzstan · Wikimedia Commons</div>
+    <div class="stop-header">
+      <div class="stop-day">May 29</div>
+      <div><div class="stop-title">Jyrgalan Valley</div><div class="stop-subtitle">Echki-Jailoo loop (18km) · Ethical horse riding · Off the beaten path</div></div>
+    </div>
+    <div class="stop-body">
+      <p>A former Soviet coal-mining village transformed by community-based tourism. The Echki-Jailoo loop climbs through forest and shepherd camps to alpine meadows carpeted with wildflowers — yellow, purple, white. Marmots everywhere. The best place for ethical horse riding, with horses owned and guided by local families.</p>
+    </div>
+  </div>
+
+  <div class="route-line">↓ · · · 30min drive + 4hr hike · · · ↓</div>
+
+  <div class="stop">
+    <img class="stop-img" src="https://commons.wikimedia.org/wiki/Special:FilePath/Yurts_in_Altyn_Arashan,_Kyrgyzstan.jpg?width=1200" alt="Yurts in Altyn Arashan valley" onerror="this.style.display='none'">
+    <div class="stop-img-credit">Yurts in Altyn Arashan · Photo: Adam Harangozó · CC BY-SA 4.0</div>
+    <div class="stop-header">
+      <div class="stop-day">May 30</div>
+      <div><div class="stop-title">Altyn Arashan ✨</div><div class="stop-subtitle">Hot springs · Glacier views · Yurt camp at 2,900m · NON-NEGOTIABLE</div></div>
+    </div>
+    <div class="stop-body">
+      <p>"Golden Spa" — a narrow river valley climbing from pine forest into alpine meadows, ending at natural hot springs with views to 4,000m+ glaciated peaks. Soak in naturally heated water as night falls and snow-capped mountains reflect in the pool. The water is mildly radioactive, "considered therapeutic in Central Asian tradition." Stars at altitude are extraordinary.</p>
+    </div>
+  </div>
+
+  <div class="route-line">↓ · · · hike down + 5.5hr drive · · · ↓</div>
+
+  <div class="stop">
+    <div class="stop-header">
+      <div class="stop-day">May 31 – Jun 1</div>
+      <div><div class="stop-title">Return: Bishkek → Almaty → ✈️</div><div class="stop-subtitle">Border crossing · Final exploration · Flight home</div></div>
+    </div>
+    <div class="stop-body">
+      <p>Drive back to Bishkek, cross the border to Almaty, and catch your evening flight. Joe flies to Tokyo; the SG group flies home via Beijing.</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map').setView([42.3, 76.5], 7);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+  maxZoom: 18
+}).addTo(map);
+
+const stops = [
+  { name: "Almaty", lat: 43.2551, lng: 76.9126, color: "#e74c3c", day: "May 23", desc: "Arrival · Green Bazaar · Panfilov Park" },
+  { name: "Bishkek", lat: 42.8746, lng: 74.5698, color: "#3498db", day: "May 24", desc: "Transit · Capital city" },
+  { name: "Ala Archa", lat: 42.6500, lng: 74.4833, color: "#27ae60", day: "May 25", desc: "Glacier valley hike (16km)" },
+  { name: "Kochkor", lat: 42.2167, lng: 75.7500, color: "#3498db", day: "May 25", desc: "Gateway to Song-Kul" },
+  { name: "Song-Kul", lat: 41.8333, lng: 75.1500, color: "#27ae60", day: "May 26", desc: "Nomadic yurt camp (3,016m) ⚠️" },
+  { name: "Bokonbaevo", lat: 42.1000, lng: 76.0833, color: "#f39c12", day: "May 27", desc: "Eagle hunting · Issyk-Kul south shore" },
+  { name: "Karakol", lat: 42.4907, lng: 78.3890, color: "#3498db", day: "May 28", desc: "Trekking capital · Base camp" },
+  { name: "Jyrgalan", lat: 42.6167, lng: 78.6500, color: "#27ae60", day: "May 29", desc: "Echki-Jailoo loop · Horse riding" },
+  { name: "Altyn Arashan", lat: 42.6000, lng: 78.5000, color: "#27ae60", day: "May 30", desc: "Hot springs · Yurt camp (2,900m) ✨" },
+];
+
+stops.forEach(s => {
+  const icon = L.divIcon({
+    html: `<div style="background:${s.color}; width:14px; height:14px; border-radius:50%; border:2px solid white; box-shadow:0 1px 4px rgba(0,0,0,0.4);"></div>`,
+    className: '',
+    iconSize: [14, 14],
+    iconAnchor: [7, 7]
+  });
+  L.marker([s.lat, s.lng], { icon })
+    .addTo(map)
+    .bindPopup(`<strong>${s.name}</strong><br><em>${s.day}</em><br>${s.desc}`);
+});
+
+const routeCoords = stops.map(s => [s.lat, s.lng]);
+routeCoords.push([42.8746, 74.5698]); // return to Bishkek
+routeCoords.push([43.2551, 76.9126]); // return to Almaty
+
+L.polyline(routeCoords, {
+  color: '#2c3e50',
+  weight: 3,
+  opacity: 0.6,
+  dashArray: '8, 8'
+}).addTo(map);
+
+L.polyline([[43.2551, 76.9126], [42.8746, 74.5698]], {
+  color: '#e74c3c',
+  weight: 3,
+  opacity: 0.8,
+}).addTo(map);
+</script>
+
+</body>
+</html>
