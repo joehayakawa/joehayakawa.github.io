@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kyrgyzstan Trip Planning Guide · Group of 6 · May–June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --parchment: #ede6d3;
+    --earth: #8b6914;
+    --terracotta: #c1440e;
+    --sage: #4a6741;
+    --slate: #2c3e50;
+    --ink: #1a1a18;
+    --muted: #6b6457;
+    --highlight: #d4a843;
+    --warning-bg: #fff3cd;
+    --warning-border: #e6a817;
+    --ok-bg: #e8f5e9;
+    --ok-border: #4a6741;
+    --danger-bg: #fce4ec;
+    --danger-border: #c1440e;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ——— HERO ——— */
+  .hero {
+    background: var(--slate);
+    color: white;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 80% 50%, rgba(212,168,67,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(74,103,65,0.2) 0%, transparent 50%);
+  }
+
+  .hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+
+  .hero-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 16px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--highlight);
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .hero-meta-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .hero-meta-item strong {
+    display: block;
+    color: white;
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* ——— LAYOUT ——— */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+
+  /* ——— SECTIONS ——— */
+  .section {
+    padding: 52px 0 40px;
+    border-bottom: 1px solid rgba(139,105,20,0.15);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--slate);
+  }
+
+  /* ——— ALERT BOXES ——— */
+  .alert {
+    border-left: 4px solid;
+    padding: 18px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+  }
+
+  .alert-warning { background: var(--warning-bg); border-color: var(--warning-border); }
+  .alert-ok { background: var(--ok-bg); border-color: var(--ok-border); }
+  .alert-danger { background: var(--danger-bg); border-color: var(--danger-border); }
+
+  .alert-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .alert-warning .alert-title { color: #9a6800; }
+  .alert-ok .alert-title { color: var(--sage); }
+  .alert-danger .alert-title { color: var(--terracotta); }
+
+  /* ——— VISA TABLE ——— */
+  .visa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .visa-card {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .visa-card-header {
+    padding: 12px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .visa-card-body { padding: 12px 16px; font-size: 14px; line-height: 1.6; }
+
+  .visa-ok .visa-card-header { background: var(--ok-bg); color: var(--sage); }
+  .visa-warn .visa-card-header { background: var(--warning-bg); color: #9a6800; }
+
+  /* ——— FLIGHT CARDS ——— */
+  .flight-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .flight-card {
+    border: 1px solid rgba(139,105,20,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: white;
+  }
+
+  .flight-card.recommended { border-color: var(--sage); border-width: 2px; }
+
+  .flight-card-header {
+    padding: 14px 18px;
+    background: var(--parchment);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .flight-card.recommended .flight-card-header { background: var(--sage); color: white; }
+
+  .flight-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .flight-card-body { padding: 16px 18px; font-size: 14px; }
+  .flight-card-body p { margin-bottom: 8px; }
+  .flight-card-body strong { color: var(--slate); }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .badge-green { background: var(--ok-bg); color: var(--sage); }
+  .badge-amber { background: var(--warning-bg); color: #9a6800; }
+  .badge-red { background: var(--danger-bg); color: var(--terracotta); }
+
+  /* ——— PLACE CARDS ——— */
+  .place-cards { margin: 24px 0; }
+
+  .place-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(139,105,20,0.15);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .place-card-header {
+    background: var(--slate);
+    color: white;
+    padding: 20px 24px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .place-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .place-card-header .place-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-top: 4px;
+  }
+
+  .place-card-body { padding: 20px 24px; }
+
+  .place-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 14px 0;
+    border-top: 1px solid rgba(0,0,0,0.07);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    margin: 16px 0;
+  }
+
+  .place-stat { font-size: 13px; }
+  .place-stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  /* ——— HIKE BOXES ——— */
+  .hike-list { margin: 16px 0; }
+
+  .hike-item {
+    border: 1px solid rgba(74,103,65,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: rgba(74,103,65,0.03);
+  }
+
+  .hike-item h4 {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+
+  .hike-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .hike-meta-chip {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    background: rgba(74,103,65,0.1);
+    color: var(--sage);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .difficulty-easy { background: rgba(74,103,65,0.12); color: var(--sage); }
+  .difficulty-moderate { background: rgba(212,168,67,0.15); color: #8a6300; }
+  .difficulty-hard { background: rgba(193,68,14,0.1); color: var(--terracotta); }
+
+  /* ——— ROUTE OPTIONS ——— */
+  .route-options { margin: 24px 0; }
+
+  .route-option {
+    border: 2px solid rgba(139,105,20,0.2);
+    border-radius: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+
+  .route-option.recommended { border-color: var(--sage); }
+
+  .route-header {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--parchment);
+  }
+
+  .route-option.recommended .route-header { background: var(--sage); color: white; }
+
+  .route-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .route-body { padding: 20px 24px; }
+
+  .day-table { width: 100%; border-collapse: collapse; font-size: 14px; margin: 16px 0; }
+  .day-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.04);
+    color: var(--muted);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .day-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+  }
+
+  .day-table tr:last-child td { border-bottom: none; }
+  .day-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+
+  .day-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .sleep-icon { font-size: 12px; }
+
+  /* ——— WILDLIFE TABLE ——— */
+  .wildlife-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .wildlife-item {
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .wildlife-emoji { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+
+  .wildlife-name { font-weight: 600; color: var(--slate); margin-bottom: 3px; }
+  .wildlife-detail { color: var(--muted); font-size: 13px; }
+  .wildlife-chance { margin-top: 6px; }
+
+  /* ——— BUDGET TABLE ——— */
+  .budget-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .budget-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 10px 14px;
+    background: var(--parchment);
+    color: var(--muted);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .budget-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    vertical-align: top;
+  }
+  .budget-table tfoot td {
+    font-weight: 600;
+    background: var(--parchment);
+    border-top: 2px solid rgba(139,105,20,0.3);
+  }
+
+  /* ——— MULTI-DAY HIKE ——— */
+  .multiday-card {
+    background: var(--slate);
+    color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+
+  .multiday-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .multiday-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--highlight);
+  }
+
+  .multiday-body { padding: 20px 24px; }
+  .multiday-day {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+  }
+  .multiday-day:last-child { border-bottom: none; }
+  .multiday-day-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--highlight);
+    margin-bottom: 6px;
+  }
+
+  /* ——— ROADS EXPLAINER ——— */
+  .explainer-box {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 20px 0;
+    border-left: 5px solid var(--terracotta);
+  }
+
+  .explainer-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--terracotta);
+  }
+
+  /* ——— PRACTICAL TIPS ——— */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .tip-card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px 18px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+  }
+
+  .tip-card-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--earth);
+    margin-bottom: 8px;
+  }
+
+  /* ——— DIVIDERS ——— */
+  .ornamental-divider {
+    text-align: center;
+    padding: 10px 0;
+    color: var(--earth);
+    font-size: 18px;
+    letter-spacing: 8px;
+    opacity: 0.5;
+  }
+
+  /* ——— INLINE INFO ——— */
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  
+  strong { color: var(--slate); }
+  
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; }
+
+  .text-muted { color: var(--muted); font-size: 14px; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 620px) {
+    .two-col { grid-template-columns: 1fr; }
+    .hero { padding: 40px 24px; }
+    .flight-cards { grid-template-columns: 1fr; }
+    .visa-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ——— ALMATY TOGGLE ——— */
+  .almaty-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  @media (max-width: 580px) { .almaty-compare { grid-template-columns: 1fr; } }
+
+  .almaty-option {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .almaty-option-header {
+    padding: 14px 18px;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .almaty-option.opt-a .almaty-option-header { background: rgba(74,103,65,0.12); color: var(--sage); }
+  .almaty-option.opt-b .almaty-option-header { background: rgba(212,168,67,0.12); color: var(--earth); }
+  .almaty-option-body { padding: 14px 18px; font-size: 14px; background: white; }
+  .almaty-option-body li { margin-bottom: 5px; }
+
+  .verdict {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--sage);
+    color: white;
+  }
+
+  /* ——— TOC ——— */
+  .toc {
+    background: white;
+    border-radius: 10px;
+    padding: 24px;
+    margin: 32px 0;
+    border: 1px solid rgba(139,105,20,0.15);
+  }
+
+  .toc-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .toc-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 24px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .toc-list li a {
+    color: var(--earth);
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px dotted rgba(139,105,20,0.3);
+    padding-bottom: 1px;
+  }
+
+  .toc-list li a:hover { color: var(--terracotta); }
+
+  .contingency-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .contingency-card {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    font-size: 14px;
+  }
+
+  .contingency-card h5 {
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  @media print {
+    .hero { print-color-adjust: exact; }
+    .section { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Trip Planning Brief · Confidential Draft</div>
+    <h1>Kyrgyzstan &mdash;<br><em>Land of Nomads</em></h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Group Size</strong>6 people</div>
+      <div class="hero-meta-item"><strong>Travel Dates</strong>May 22 – Jun 2, 2026</div>
+      <div class="hero-meta-item"><strong>Passports</strong>SG · HK · FR · JP</div>
+      <div class="hero-meta-item"><strong>Style</strong>Active · Nature · Ethical</div>
+      <div class="hero-meta-item"><strong>Budget/day</strong>~S$120/pax</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#visa">⚠️ Visa Requirements (Action Required)</a></li>
+      <li><a href="#flights">Flight Options</a></li>
+      <li><a href="#almaty">Almaty: Half-Day vs Straight Cross</a></li>
+      <li><a href="#roads">Why Roads Close</a></li>
+      <li><a href="#regions">Regions &amp; Destinations</a></li>
+      <li><a href="#hikes">All Hikes: Distance &amp; Difficulty</a></li>
+      <li><a href="#multiday">Multi-Day Hike Option</a></li>
+      <li><a href="#routes">Route Options</a></li>
+      <li><a href="#wildlife">Wildlife Guide</a></li>
+      <li><a href="#budget">Budget Breakdown</a></li>
+      <li><a href="#practicalities">Practicalities</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== VISA ===== -->
+  <div class="section" id="visa">
+    <div class="section-label">Before You Book Anything</div>
+    <div class="section-title">⚠️ Visa Requirements — Action Required</div>
+
+    <p>Good news: most of the group is straightforward. However, <strong>the Hong Kong passport holder has a significant constraint that needs to be resolved before the trip.</strong> Read carefully.</p>
+
+    <div class="visa-grid">
+
+      <div class="visa-card visa-ok">
+        <div class="visa-card-header">✅ Singapore</div>
+        <div class="visa-card-body">
+          <strong>Kazakhstan:</strong> Visa-free, 30 days<br>
+          <strong>Kyrgyzstan:</strong> Visa-free, 30 days<br>
+          <strong>Land crossing:</strong> No issues<br>
+          <br>
+          <span class="badge badge-green">Nothing to do</span>
+        </div>
+      </div>
+
+      <div class="visa-card visa-ok">
+        <div class="visa-card-header">✅ France</div>
+        <div class="visa-card-body">
+          <strong>Kazakhstan:</strong> Visa-free, 30 days<br>
+          <strong>Kyrgyzstan:</strong> Visa-free, <strong>60 days</strong> (EU citizen)<br>
+          <strong>Land crossing:</strong> No issues<br>
+          <br>
+          <span class="badge badge-green">Nothing to do</span>
+        </div>
+      </div>
+
+      <div class="visa-card visa-ok">
+        <div class="visa-card-header">✅ Japan</div>
+        <div class="visa-card-body">
+          <strong>Kazakhstan:</strong> Visa-free, 30 days<br>
+          <strong>Kyrgyzstan:</strong> Visa-free, <strong>unlimited</strong> stay<br>
+          <strong>Land crossing:</strong> No issues<br>
+          <br>
+          <span class="badge badge-green">Nothing to do</span>
+        </div>
+      </div>
+
+      <div class="visa-card visa-warn">
+        <div class="visa-card-header">⚠️ Hong Kong (HKSAR)</div>
+        <div class="visa-card-body">
+          <strong>Kazakhstan:</strong> Visa-free, 14 days ✅<br>
+          <strong>Kyrgyzstan:</strong> <span style="color:var(--terracotta); font-weight:600;">RESTRICTED</span><br>
+          <br>
+          <strong>The problem:</strong> HKSAR passport holders are only granted visa-free access to Kyrgyzstan if entering <em>and exiting</em> through Manas International Airport with a return air ticket from Manas. <strong>Land border crossings are NOT covered under visa-free.</strong><br>
+          <br>
+          <span class="badge badge-amber">Action Required — See Below</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="alert alert-danger">
+      <div class="alert-title">🔴 HK Passport: What to Do</div>
+      <p>The HK passport holder must apply for a <strong>Kyrgyzstan e-Visa</strong> before the trip. The e-Visa specifically authorises land border entry from Kazakhstan (at the Ak-Jol, Ak-Tilek, Chaldybar, or Chon-Kapka crossings — all standard Almaty–Bishkek route crossings).</p>
+      <br>
+      <ul>
+        <li><strong>Where to apply:</strong> <code>evisa.e-gov.kg</code> (official Kyrgyzstan government portal)</li>
+        <li><strong>Processing time:</strong> 3 business days</li>
+        <li><strong>Cost:</strong> ~US$10–20 depending on duration and entries selected</li>
+        <li><strong>Validity:</strong> Apply for 30 days, single or double entry</li>
+        <li><strong>Do this:</strong> At least 2 weeks before departure to be safe</li>
+      </ul>
+      <br>
+      <p><strong>Option B — Fly instead of land crossing:</strong> The HK passport holder could fly Almaty → Bishkek (~1hr, ~S$60–80) separately from the group, then rejoin. This adds cost and complexity. The e-Visa is the simpler solution.</p>
+      <br>
+      <p class="text-muted">Note: Verify the current situation with the Kyrgyzstan Embassy in Beijing or HK before travelling, as immigration policies can change.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== FLIGHTS ===== -->
+  <div class="section" id="flights">
+    <div class="section-label">Getting There</div>
+    <div class="section-title">Flight Options</div>
+
+    <p>All three options depart Singapore on <strong>May 22</strong> and route through Bangkok Don Mueang. You arrive in Almaty just after midnight on May 23. The key difference is the <strong>return journey</strong> — and how many usable days you get.</p>
+
+    <div class="flight-cards">
+
+      <div class="flight-card">
+        <div class="flight-card-header">
+          <div>
+            <div class="flight-price">S$1,188</div>
+            <div style="font-family:Space Mono,monospace; font-size:11px; color:var(--muted)">Option 1 · Budget</div>
+          </div>
+          <span class="badge badge-amber">7.5 usable days</span>
+        </div>
+        <div class="flight-card-body">
+          <p><strong>Outbound:</strong> May 22, SIN → DMK → ALA<br>Arrive Almaty 00:10 May 23</p>
+          <p><strong>Return:</strong> May 31 at 01:30am from ALA<br>Arrive Singapore Jun 1, 20:15</p>
+          <p><strong>Carrier:</strong> AirAsia both ways</p>
+          <p><strong>Last Kyrgyzstan day:</strong> May 30. Must cross back to Almaty afternoon May 30, reach airport by 11pm.</p>
+          <p><strong>Risk:</strong> <span class="badge badge-green">Clean routing</span></p>
+        </div>
+      </div>
+
+      <div class="flight-card recommended">
+        <div class="flight-card-header">
+          <div>
+            <div class="flight-price">S$1,499</div>
+            <div style="font-family:Space Mono,monospace; font-size:11px; color:rgba(255,255,255,0.7)">Option 2 · Recommended</div>
+          </div>
+          <span class="badge badge-green">9+ usable days</span>
+        </div>
+        <div class="flight-card-body">
+          <p><strong>Outbound:</strong> May 22, SIN → DMK → ALA<br>Arrive Almaty 00:10 May 23</p>
+          <p><strong>Return:</strong> Jun 1 at 21:50pm from ALA<br>Arrive Singapore Jun 2, 16:25 via Beijing</p>
+          <p><strong>Carrier:</strong> AirAsia out, Air China return via Beijing</p>
+          <p><strong>Last Kyrgyzstan day:</strong> Jun 1 morning. More flexibility.</p>
+          <p><strong>Risk:</strong> <span class="badge badge-green">Clean routing</span></p>
+          <p><strong>Extra cost vs Option 1:</strong> ~S$311/person for 1.5 extra days. For this kind of active trip, worth it.</p>
+        </div>
+      </div>
+
+      <div class="flight-card">
+        <div class="flight-card-header">
+          <div>
+            <div class="flight-price">S$1,506</div>
+            <div style="font-family:Space Mono,monospace; font-size:11px; color:var(--muted)">Option 3 · Avoid</div>
+          </div>
+          <span class="badge badge-red">Risky return</span>
+        </div>
+        <div class="flight-card-body">
+          <p><strong>Outbound:</strong> May 22, SIN → DMK → ALA<br>Arrive Almaty 00:10 May 23</p>
+          <p><strong>Return:</strong> Jun 1 via Guangzhou, arrive Jun 2, 14:45</p>
+          <p><strong>Carrier:</strong> AirAsia out, Air Astana + Scoot return via Guangzhou</p>
+          <p><strong>⚠️ Problem:</strong> Guangzhou self-transfer requires different terminals + collect and recheck all baggage. For a group of 6, with potential delays, this is high-risk.</p>
+          <p><strong>My call:</strong> Almost same price as Option 2 with significantly more risk. Avoid.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== ALMATY ===== -->
+  <div class="section" id="almaty">
+    <div class="section-label">Day 1 Decision</div>
+    <div class="section-title">Almaty: Half-Day vs Straight Crossing</div>
+
+    <p>Either way, you arrive Almaty at 00:10 on May 23 and need a few hours' sleep. The border crossing to Bishkek takes 3.5–4 hours by road (private minivan). Here's how both options look.</p>
+
+    <div class="almaty-compare">
+      <div class="almaty-option opt-a">
+        <div class="almaty-option-header">Option A: Straight Crossing</div>
+        <div class="almaty-option-body">
+          <ul>
+            <li>Land at 00:10, airport hotel or nearby guesthouse</li>
+            <li>Wake 6am, taxi to border taxi stand</li>
+            <li>Depart border ~8am, arrive Bishkek by noon</li>
+            <li>You gain a half-day in Kyrgyzstan</li>
+          </ul>
+          <br>
+          <strong>Pros:</strong> More Kyrgyzstan time<br>
+          <strong>Cons:</strong> 4–5hrs sleep only; group arrives in Bishkek groggy; miss Almaty entirely
+        </div>
+      </div>
+
+      <div class="almaty-option opt-b">
+        <div class="almaty-option-header">Option B: Almaty Half-Day ⭐ Recommended</div>
+        <div class="almaty-option-body">
+          <ul>
+            <li>Land at 00:10, sleep 6–7hrs</li>
+            <li>Wake 8am: Green Bazaar (Central Asian food market), Panfilov Park</li>
+            <li>Optional: Shymbulak cable car (mountains above city, 45min each way, stunning)</li>
+            <li>Good lunch: Kazakh-Uyghur food ~$10–15/person</li>
+            <li>Depart border 2–3pm, arrive Bishkek 7–8pm</li>
+          </ul>
+          <br>
+          <strong>Pros:</strong> Rested, fed, great group morale. Almaty is genuinely worth 3–4hrs.<br>
+          <strong>Cons:</strong> Lose half a Kyrgyzstan day
+          <div><span class="verdict">My recommendation</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-card" style="margin-top:16px;">
+      <div class="tip-card-label">About Almaty</div>
+      Almaty was Kazakhstan's capital until 1997 and remains its largest, most cosmopolitan city. It sits at the foot of the Trans-Ili Alatau mountains — the city's backdrop is dramatic snow-capped peaks. The Green Bazaar (Zelyony Bazar) is one of Central Asia's great markets: entire floors dedicated to dried fruits, nuts, spices, and cheese. The wooden Russian Orthodox Church of the Ascension in Panfilov Park was built without a single nail in 1907, and somehow survived a magnitude 7.7 earthquake in 1911. Almaty's café culture is surprisingly sophisticated — a legacy of its Soviet intellectual class.
+    </div>
+  </div>
+
+  <!-- ===== ROADS ===== -->
+  <div class="section" id="roads">
+    <div class="section-label">Understanding the Uncertainty</div>
+    <div class="section-title">Why Mountain Roads Close in Late May</div>
+
+    <div class="explainer-box">
+      <h4>The Song-Kul Road — Why It Might Be Closed</h4>
+      <p>Song-Kul lake sits at <strong>3,016 metres</strong> above sea level — that's higher than the summit of many mountains in Europe. To reach it from Kochkor (the nearest town), you drive up a mountain track that crosses a pass at around <strong>3,400 metres</strong>.</p>
+      <br>
+      <p>In winter, this road completely disappears under several metres of snow. Nobody uses it. Nobody clears it. From roughly October through to late May, it's simply inaccessible. Imagine covering the road with a thick white duvet and then forgetting about it for six months — that's essentially what happens.</p>
+      <br>
+      <p>By late May, the snow starts melting from the bottom up. But the pass at the top may still hold weeks' worth of packed snow. Even if the road itself is mostly clear, the remaining snowpack can create two problems:</p>
+      <ul>
+        <li><strong>Snowdrifts blocking the track</strong> — even a 4WD can't push through 2 metres of packed snow</li>
+        <li><strong>Meltwater and mud</strong> — the road surface becomes saturated and vehicles sink in or can't grip</li>
+      </ul>
+      <br>
+      <p>There is no official road opening announcement. Local drivers and guesthouse owners simply check on the day — usually by calling someone who drove up recently or by reading WhatsApp groups. The answer is often "maybe." This is completely normal in Central Asia. Your driver-guide will know how to check and will have a backup plan ready. The important thing is: <strong>you can and should make the call on the morning you're meant to go</strong>. It's not a failure if the road is closed — it just means Plan B.</p>
+      <br>
+      <p>In a good year (mild winter, early warm spring), the road can open by mid-May. In a harder year, it may not reliably open until June 5–10. Late May is the <em>shoulder period</em> — you're hoping for the former, planning for the latter.</p>
+    </div>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">⚠️ Contingency Plans If Song-Kul Road is Closed</div>
+      <div class="contingency-grid">
+        <div class="contingency-card">
+          <h5>Kochkor Valley Yurt Stay</h5>
+          Village yurts in the valley below Song-Kul. Same nomadic family culture, horse riding, rolling hills. Less dramatic altitude but genuinely authentic.
+        </div>
+        <div class="contingency-card">
+          <h5>Add an Extra Altyn Arashan Day</h5>
+          Spend 2 nights at Altyn Arashan yurt camp instead of 1. Day hike toward Ala-Kul lake or glacier ridge on the second day. A spectacular use of time.
+        </div>
+        <div class="contingency-card">
+          <h5>Jyrgalan Extra Hiking Day</h5>
+          Do both the Echki-Jailoo loop and the Taldy Gorge on separate days instead of squeezing them. More relaxed pace.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== REGIONS ===== -->
+  <div class="section" id="regions">
+    <div class="section-label">Know Your Destinations</div>
+    <div class="section-title">Regions &amp; Destinations</div>
+
+    <div class="place-cards">
+
+      <!-- BISHKEK / ALA ARCHA -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Bishkek &amp; Ala Archa</h3>
+            <div class="place-tag">Capital City · Gateway National Park</div>
+          </div>
+          <span class="badge badge-amber">Transit + Hike</span>
+        </div>
+        <div class="place-card-body">
+          <p><strong>About Bishkek:</strong> Kyrgyzstan's capital of ~1 million people. Soviet-era wide boulevards and Lenin statues sit alongside modern cafés and bazaars. It's a functional base — good guesthouses, gear shops, excellent Kyrgyz food (try <em>lagman</em> noodle soup and <em>samsa</em> pastries). You won't want to linger here, but it's a comfortable launch pad.</p>
+          <p><strong>About Ala Archa:</strong> A national park 40km south of Bishkek, tucked into a dramatic gorge in the Tian Shan range. The gorge narrows to reveal glacier-fed rivers, ancient fir forests, and snow-capped peaks above 4,000m. Red squirrels run along the path. This is your warm-up hike on the way out of Bishkek — a preview of what's ahead.</p>
+          <p><em>Fun fact:</em> Bishkek means "churn for fermented mare's milk" (kumiss) in Kyrgyz. The city was a small fortress on the Silk Road before Russian expansion in the 19th century. The Tian Shan mountains visible from Ala Archa are part of one of Central Asia's great mountain ranges, stretching 2,500km from Uzbekistan to western China.</p>
+        </div>
+      </div>
+
+      <!-- KOCHKOR / SONG-KUL -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Kochkor &amp; Song-Kul</h3>
+            <div class="place-tag">Nomadic Heartland · Alpine Lake at 3,016m</div>
+          </div>
+          <span class="badge badge-green">Must Try (Weather Dependent)</span>
+        </div>
+        <div class="place-card-body">
+          <p><strong>About Kochkor:</strong> A small market town of about 12,000 people, surrounded by broad rolling valleys. This is where the highlands begin. Kochkor is the gateway to Song-Kul and a hub for community-based tourism in the region. The town's weekly market draws herders from surrounding villages and is one of the most authentic non-touristy bazaars in Kyrgyzstan.</p>
+          <p><strong>About Song-Kul:</strong> This is the Kyrgyzstan you came to see. A vast, sky-blue alpine lake encircled by open steppe and rolling hills — no trees, no fences, just grass, sky, horses, and yurts. In late May/June, nomadic Kyrgyz families make their seasonal migration up to the lake with their livestock, setting up yurt camps they'll live in through summer. You stay <em>with</em> these families — sleeping in their yurts, eating their food (mutton stew, fresh bread, yoghurt), drinking fermented mare's milk (kumiss) around a dung fire in the evening.</p>
+          <p>At night, with no electricity for miles, the sky is extraordinary — the Milky Way is visible with the naked eye. Marmots are everywhere by day (curious, fat, and very entertaining). Wild horses roam in herds along the shore. Golden eagles and lammergeiers circle overhead.</p>
+          <p><em>Fun fact:</em> Song-Kul is the second-highest lake in Kyrgyzstan. The name means "next lake" in Kyrgyz, as opposed to Issyk-Kul ("warm lake") to its north. Despite the altitude, the lake doesn't freeze as severely as you'd expect because of underground thermal activity. The nomadic tradition of summer migration to high pastures (<em>jailoo</em>) has been practised here for over a thousand years.</p>
+
+          <div class="place-stats">
+            <div class="place-stat"><span class="place-stat-label">Altitude</span>3,016m</div>
+            <div class="place-stat"><span class="place-stat-label">Drive from Kochkor</span>~2.5hrs (80km dirt road)</div>
+            <div class="place-stat"><span class="place-stat-label">Road opens</span>Late May–early June (variable)</div>
+            <div class="place-stat"><span class="place-stat-label">Stay</span>1–2 nights, nomadic yurt</div>
+            <div class="place-stat"><span class="place-stat-label">Night temp (June)</span>2–8°C — bring layers</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOKONBAEVO / SOUTH SHORE -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Bokonbaevo &amp; Issyk-Kul South Shore</h3>
+            <div class="place-tag">Eagle Hunting · Yurt Crafts · Alpine Lake</div>
+          </div>
+          <span class="badge badge-green">Half-Day Stop</span>
+        </div>
+        <div class="place-card-body">
+          <p><strong>About Issyk-Kul:</strong> The world's second-largest alpine lake after Lake Titicaca in Peru. It's 182km long, 60km wide, and never freezes despite being at 1,600m altitude — hence its name, "warm lake" in Kyrgyz. The north shore is developed with beach resorts (skip it). The <strong>south shore</strong> is where the interesting villages are, with the mountains of the Central Tian Shan rising directly behind.</p>
+          <p><strong>About Bokonbaevo:</strong> A village of about 6,000 people on the south shore, famous for being the centre of Kyrgyzstan's living <em>berkutchi</em> tradition — eagle hunters. This practice, which may be 6,000 years old, involves training golden eagles to hunt foxes, rabbits, and small deer. A skilled hunter can spend 2–3 years training a single eagle. UNESCO recognised it as an Intangible Cultural Heritage in 2016.</p>
+          <p>For visitors, local hunters offer demonstrations: a live session where you see the eagle hunt a lure, sit on the hunter's arm, and learn about the relationship between hunter and bird. This is <strong>community-run and genuine</strong> — these are working hunters, not a staged tourist show. Cost: ~$10–15/person. Duration: 30–45 minutes. One of the most memorable wildlife experiences in Central Asia.</p>
+          <p>Also in the area: <strong>Kyzyl-Tuu</strong>, a village where you can watch traditional yurt-making. The wooden lattice frames (<em>kerege</em>), roof poles (<em>uuk</em>), and felt coverings are all made by hand, a craft passed down through families.</p>
+
+          <div class="place-stats">
+            <div class="place-stat"><span class="place-stat-label">Drive from Song-Kul</span>~3hrs</div>
+            <div class="place-stat"><span class="place-stat-label">Drive from Karakol</span>~2hrs</div>
+            <div class="place-stat"><span class="place-stat-label">Eagle demo cost</span>~$10–15/person</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KARAKOL -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Karakol</h3>
+            <div class="place-tag">Base Camp · Trekking Capital of Kyrgyzstan</div>
+          </div>
+          <span class="badge badge-green">Main Base</span>
+        </div>
+        <div class="place-card-body">
+          <p>Karakol is a city of about 75,000, sitting at the eastern tip of Lake Issyk-Kul. It's the undisputed trekking capital of Kyrgyzstan — every serious hiker ends up here. The streets are lined with guesthouses, gear rental shops, and restaurants. It's a comfortable, friendly base with good food and a lively Sunday animal market that's been running for over a century.</p>
+          <p>The city was founded by Russian settlers in 1869 as a military and administrative outpost. This colonial history left behind two architectural oddities that still stand: a <strong>Russian Orthodox church</strong> built entirely from timber without nails (1895), and a <strong>Chinese Dungani mosque</strong> built in traditional Chinese pagoda style by Muslim Dungans — a Chinese ethnic group who fled persecution in China in the 1870s. The juxtaposition of these two buildings, within a few hundred metres of each other, tells the whole messy history of Central Asia in two structures.</p>
+          <p><em>Fun fact:</em> Przhevalsky, the Russian explorer who first catalogued the Przewalski horse (the world's only surviving true wild horse) is buried here. There's a small museum in his name on the outskirts of town.</p>
+
+          <div class="place-stats">
+            <div class="place-stat"><span class="place-stat-label">Drive from Bishkek</span>~5.5hrs (380km, paved)</div>
+            <div class="place-stat"><span class="place-stat-label">Altitude</span>1,770m</div>
+            <div class="place-stat"><span class="place-stat-label">Best time</span>May–September</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALTYN ARASHAN -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Altyn Arashan</h3>
+            <div class="place-tag">Hot Springs · Glacier Views · Yurt Camp</div>
+          </div>
+          <span class="badge badge-green">Non-Negotiable Must-Do</span>
+        </div>
+        <div class="place-card-body">
+          <p>The name means <strong>"Golden Spa"</strong> in Kyrgyz — and it earns it. A narrow river valley 13km from the village of Ak-Suu, Altyn Arashan is the most beloved destination in the Karakol area. The valley climbs from pine forest into open alpine meadows, ending at a cluster of natural hot springs at about 2,900m, with views to 4,000m+ glaciated peaks directly ahead.</p>
+          <p>Semi-permanent yurt camps operate here from late May to September. They're basic but everything you need: sleeping mats with thick felt blankets, meals cooked over wood stoves, and the hot springs a two-minute walk away. Soaking in naturally heated water with snow-capped mountains reflecting in the pool as night falls is genuinely one of the best experiences in Central Asia.</p>
+          <p>From the yurt camp, a further half-day hike takes you to the base of the <strong>Palatka glacier</strong> and the famous <strong>Ala-Kul lake</strong> turnoff (a challenging high pass — see multi-day hike section). Ibex are often spotted on the rocky slopes above the treeline.</p>
+          <p><em>Fun fact:</em> The water in the hot springs is rich in radon (mildly radioactive, considered therapeutic in Central Asian tradition). Local herders have used these springs for generations to treat joint pain. The springs range in temperature from about 30°C to 45°C.</p>
+
+          <div class="place-stats">
+            <div class="place-stat"><span class="place-stat-label">Distance from Ak-Suu</span>13km one way</div>
+            <div class="place-stat"><span class="place-stat-label">Elevation gain</span>~800m</div>
+            <div class="place-stat"><span class="place-stat-label">Yurt camp altitude</span>~2,900m</div>
+            <div class="place-stat"><span class="place-stat-label">Access</span>Hike (3.5–4.5hrs) or 4WD jeep (45min, very bumpy)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JYRGALAN -->
+      <div class="place-card">
+        <div class="place-card-header">
+          <div>
+            <h3>Jyrgalan Valley</h3>
+            <div class="place-tag">Village Trekking · Ethical Horse Riding · Off the Beaten Path</div>
+          </div>
+          <span class="badge badge-green">Hidden Gem</span>
+        </div>
+        <div class="place-card-body">
+          <p>Jyrgalan is a small village 45 minutes east of Karakol, at the end of a valley that opens into some of the most beautiful alpine terrain in the region. Until a few years ago, almost nobody came here. A community-based tourism project transformed it into one of Kyrgyzstan's best-kept trekking destinations, and it's still far less visited than Altyn Arashan.</p>
+          <p>The valley itself is wide and lush — a patchwork of farms, flowing streams, and forested hills giving way to open alpine meadows higher up. The word <em>jailoo</em> (summer pasture) perfectly describes the upper reaches. This is also the best place in the Karakol area for <strong>ethical horse riding</strong> — the horses are owned and managed by local families as working animals, the rides are guided by their owners, and the CBT (Community Based Tourism) network has vetted operators here specifically.</p>
+          <p><em>Fun fact:</em> Jyrgalan was a Soviet-era coal mining village. When the mines closed after independence in 1991, most economic activity vanished. Community-based tourism — developed with support from international NGOs — gave the village an alternative livelihood. Today the horses that once worked in the mines carry trekkers through flower-covered meadows.</p>
+
+          <div class="place-stats">
+            <div class="place-stat"><span class="place-stat-label">Drive from Karakol</span>45min</div>
+            <div class="place-stat"><span class="place-stat-label">Hike options</span>2 main routes (see below)</div>
+            <div class="place-stat"><span class="place-stat-label">Horse riding</span>Most ethical option in Karakol area</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== HIKES ===== -->
+  <div class="section" id="hikes">
+    <div class="section-label">On the Trail</div>
+    <div class="section-title">All Hikes: Distance, Time &amp; Difficulty</div>
+
+    <p>Difficulty ratings are based on your group's profile: <strong>fit, experienced, no altitude issues</strong>. A hike rated "Hard" here would be rated Very Hard for a general tourist group.</p>
+
+    <div class="hike-list">
+
+      <div class="hike-item">
+        <h4>Ala Archa — Ak-Sai Glacier Viewpoint</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">16km round trip</span>
+          <span class="hike-meta-chip">800m elevation gain</span>
+          <span class="hike-meta-chip">4–5 hours</span>
+          <span class="hike-meta-chip difficulty-moderate">Moderate</span>
+        </div>
+        <p style="font-size:14px">A well-marked trail climbing from the park entrance through pine forest, then opening into rocky alpine terrain. The route follows the Ak-Sai river, ending at a viewpoint overlooking the glacier tongue. No technical skills required. Trail is wide and clear throughout. If energy allows, you can push a further 1.5hrs to the glacier base itself (adds ~500m gain — total becomes Hard).</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Song-Kul — Lake Shore Walk</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">3–8km (choose your distance)</span>
+          <span class="hike-meta-chip">~50m elevation gain</span>
+          <span class="hike-meta-chip">1–3 hours</span>
+          <span class="hike-meta-chip difficulty-easy">Easy</span>
+        </div>
+        <p style="font-size:14px">A flat, completely undirected walk along the lake shore. No trail needed — you wander across open steppe, past grazing horses and yurts, along the water's edge. The point is the openness, the wildlife, and the sky. Do it in the evening for sunset, or early morning for the light on the peaks.</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Altyn Arashan — Ak-Suu village to Hot Springs Camp</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">13km one way / 26km return</span>
+          <span class="hike-meta-chip">800m elevation gain</span>
+          <span class="hike-meta-chip">3.5–4.5hrs up / 2.5–3hrs down</span>
+          <span class="hike-meta-chip difficulty-moderate">Moderate</span>
+        </div>
+        <p style="font-size:14px">Wide, well-used track (also accessible by 4WD) climbing along the Arashan river. First section through pine and fir forest; the second half opens to alpine meadow with glacier views ahead. Two steeper sections — one mid-route, one just before the camp. You don't need to return on foot: a 4WD jeep service runs up and down for ~500 som per person if legs are tired on the way back.</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Altyn Arashan — Upper Valley Day Hike (from camp)</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">8–10km return from camp</span>
+          <span class="hike-meta-chip">500–600m gain</span>
+          <span class="hike-meta-chip">3–4 hours</span>
+          <span class="hike-meta-chip difficulty-moderate">Moderate–Hard</span>
+        </div>
+        <p style="font-size:14px">From the yurt camp, continue up toward the glacier and the base of the Ala-Kul pass. Rocky terrain above the treeline; good chance of seeing ibex on the cliff faces. This is a full-morning hike from camp — perfect if you're staying 2 nights.</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Jyrgalan — Echki-Jailoo (Eagle's Pasture) Loop</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">~18km loop</span>
+          <span class="hike-meta-chip">900m elevation gain</span>
+          <span class="hike-meta-chip">6–8 hours</span>
+          <span class="hike-meta-chip difficulty-hard">Moderate–Hard</span>
+        </div>
+        <p style="font-size:14px">The signature Jyrgalan hike. Climbs through forest and past traditional summer shepherd camps to broad alpine meadows with panoramic views. The meadows in late May/June are carpeted with wildflowers — yellow, purple, white. Marmots everywhere. The loop descends via a different ridge with views back down the valley. No technical sections, but it's a long day — start early.</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Jyrgalan — Taldy Gorge</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">~14km return</span>
+          <span class="hike-meta-chip">600m elevation gain</span>
+          <span class="hike-meta-chip">5–6 hours</span>
+          <span class="hike-meta-chip difficulty-moderate">Moderate</span>
+        </div>
+        <p style="font-size:14px">A gorge hike leading to a series of waterfalls. The canyon walls narrow dramatically, with interesting rock formations. Halfway up you pass the remains of a Soviet coal mine — rusted equipment, abandoned conveyor belts, an oddly photogenic industrial relic in a wild landscape. Good for a second Jyrgalan day or if the group prefers waterfalls to open ridge walking.</p>
+      </div>
+
+      <div class="hike-item">
+        <h4>Karakol Gorge</h4>
+        <div class="hike-meta">
+          <span class="hike-meta-chip">~12km return</span>
+          <span class="hike-meta-chip">600m elevation gain</span>
+          <span class="hike-meta-chip">4–5 hours</span>
+          <span class="hike-meta-chip difficulty-easy">Easy–Moderate</span>
+        </div>
+        <p style="font-size:14px">A gentle forest gorge walk 30 minutes from Karakol town. Wide, clear path through spruce and fir forest. Good warm-up or fill-in hike. Snow-capped peaks visible above the treeline. A pleasant half-day without any serious exertion — ideal for the morning you arrive in Karakol and want to stretch legs after driving.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== MULTI-DAY HIKE ===== -->
+  <div class="section" id="multiday">
+    <div class="section-label">Optional Upgrade</div>
+    <div class="section-title">Multi-Day Hike Option: The Ala-Kul Circuit</div>
+
+    <p>You mentioned you're comfortable with multi-day hikes. I didn't include one in the main itineraries — here's why, and what the option looks like.</p>
+
+    <div class="alert alert-warning">
+      <div class="alert-title">Why I Left This Out of the Default Routes</div>
+      <p>The Ala-Kul circuit is the most spectacular multi-day hike in the Karakol area. But Day 2 crosses a high mountain pass at <strong>3,860m</strong> over scree and possible snow, which takes 8–10 hours. In late May, the pass may still have significant snow — and without crampons or experience on snow, it can be dangerous. If your group has experience hiking on snowy passes, it's absolutely doable. If not, the long day hikes give you equivalent scenery with less risk.</p>
+    </div>
+
+    <div class="multiday-card">
+      <div class="multiday-header">
+        <h3>Ala-Kul Circuit · 3 Days from Karakol</h3>
+        <span class="badge badge-red">Hard — Requires Snow Experience</span>
+      </div>
+      <div class="multiday-body">
+        <div class="multiday-day">
+          <div class="multiday-day-label">Day 1 · Moderate · 13km · 800m gain · ~4.5hrs</div>
+          Karakol → Ak-Suu → Altyn Arashan hot springs camp. Standard Altyn Arashan approach (see hike detail above). Arrive at yurt camp, soak in hot springs. Overnight yurt.
+        </div>
+        <div class="multiday-day">
+          <div class="multiday-day-label">Day 2 · Hard · 17km · 1,100m gain, 1,500m descent · 8–10hrs</div>
+          Altyn Arashan → Ala-Kul Pass (3,860m) → Karakol Gorge. This is the crux day. Steep scree and potential snow leading to the pass. At the top: <strong>Ala-Kul lake</strong> — a glacially turquoise lake ringed by glaciers and 4,000m+ peaks, one of the most beautiful sights in Kyrgyzstan. Long descent through Karakol gorge. Camping at the bottom or push to Karakol guesthouse.
+        </div>
+        <div class="multiday-day">
+          <div class="multiday-day-label">Day 3 · Easy · 5km · minimal gain · ~2hrs</div>
+          Finish descent through Karakol gorge to road. Jeep or taxi back to Karakol town.
+        </div>
+        <div class="multiday-day" style="border:none;">
+          <div class="multiday-day-label">How to incorporate this</div>
+          Replace the "Altyn Arashan overnight + day hike" + "Jyrgalan day" in Route Option 1 with this 3-day circuit. You gain the Ala-Kul experience but give up Jyrgalan horse riding. If you want both, you'd need Option 2 flights (9 days).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ROUTE OPTIONS ===== -->
+  <div class="section" id="routes">
+    <div class="section-label">The Big Decision</div>
+    <div class="section-title">Route Options</div>
+
+    <p>All routes below assume <strong>Option 2 flights</strong> (9 days) and the <strong>Almaty half-day</strong>. I've noted how each compresses with Option 1 (7.5 days) where relevant.</p>
+
+    <div class="route-options">
+
+      <div class="route-option recommended">
+        <div class="route-header">
+          <h3>🟢 Route Option 1: The Classic Highlands Loop</h3>
+          <span class="badge" style="background:white; color:var(--sage)">⭐ Recommended</span>
+        </div>
+        <div class="route-body">
+          <p>The best overall balance. Covers Song-Kul (nomadic yurts), Bokonbaevo (eagle demo), Jyrgalan (hiking + horse riding), and Altyn Arashan (hot springs yurt camp). You see everything important without rushing any of it.</p>
+
+          <table class="day-table">
+            <thead>
+              <tr><th>Date</th><th>Where</th><th>Activity</th><th>Sleep</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="day-num">May 23</td>
+                <td><strong>Almaty</strong></td>
+                <td>Land 00:10. Sleep. Green Bazaar, Panfilov Park. Optional: Shymbulak cable car. Good lunch.</td>
+                <td><span class="sleep-icon">🏨</span> Airport hotel</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 24</td>
+                <td><strong>Bishkek</strong></td>
+                <td>Depart Almaty ~2pm. Land border crossing. Arrive Bishkek 7–8pm. Settle.</td>
+                <td><span class="sleep-icon">🏠</span> Guesthouse, Bishkek</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 25</td>
+                <td><strong>Ala Archa → Kochkor</strong></td>
+                <td>Morning: Ala Archa gorge hike, Ak-Sai glacier viewpoint (~5hrs, moderate). Drive to Kochkor ~3hrs.</td>
+                <td><span class="sleep-icon">🏕️</span> CBT yurt, Kochkor</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 26</td>
+                <td><strong>Song-Kul</strong> ⚠️</td>
+                <td><em>If road open:</em> drive up (2.5hrs). Afternoon: horse ride, lake shore walk. <em>If closed:</em> Kochkor valley yurt day — horse riding, local food, steppe walks.</td>
+                <td><span class="sleep-icon">🏕️</span> Nomadic yurt, Song-Kul</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 27</td>
+                <td><strong>Bokonbaevo</strong></td>
+                <td>Morning: Song-Kul shore walk, sunrise. Drive south shore to Bokonbaevo (~3hrs). Eagle hunting demonstration. Sunset on Issyk-Kul south shore.</td>
+                <td><span class="sleep-icon">🏠</span> Guesthouse/yurt, Bokonbaevo</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 28</td>
+                <td><strong>Karakol</strong></td>
+                <td>Drive Bokonbaevo → Karakol (~2hrs). Afternoon: Karakol gorge walk (4hrs, easy). Explore town market, Dungan mosque, wooden church.</td>
+                <td><span class="sleep-icon">🏠</span> Guesthouse, Karakol</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 29</td>
+                <td><strong>Jyrgalan</strong></td>
+                <td>Drive to Jyrgalan (45min). Full day hike: Echki-Jailoo loop (18km, 6–8hrs). OR Taldy Gorge (14km, 5hrs). Evening: horse riding with local family.</td>
+                <td><span class="sleep-icon">🏠</span> Guesthouse, Karakol</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 30</td>
+                <td><strong>Altyn Arashan</strong></td>
+                <td>Drive to Ak-Suu (30min). Hike up to Altyn Arashan (~4hrs). Afternoon: explore upper valley, hot springs soak. Stars at altitude.</td>
+                <td><span class="sleep-icon">🏕️</span> Yurt camp, Altyn Arashan</td>
+              </tr>
+              <tr>
+                <td class="day-num">May 31</td>
+                <td><strong>Karakol → Bishkek</strong></td>
+                <td>Morning hike down (~2.5hrs) or jeep. Drive Karakol → Bishkek (~5.5hrs with stops). Dinner in Bishkek.</td>
+                <td><span class="sleep-icon">🏠</span> Guesthouse, Bishkek</td>
+              </tr>
+              <tr>
+                <td class="day-num">Jun 1</td>
+                <td><strong>Bishkek → Almaty → ✈️</strong></td>
+                <td>Depart 6am. Land border. Arrive Almaty ~noon. Rest, explore, airport at 7pm. Flight 21:50.</td>
+                <td>✈️ Overnight flight</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="alert alert-warning" style="margin-top:16px;">
+            <div class="alert-title">With Option 1 Flights (7.5 days)</div>
+            Cut May 31 entirely. Drive from Karakol direct on May 30 afternoon (after jeeping down from Altyn Arashan). Altyn Arashan becomes a day trip — jeep up, spend 3–4hrs, jeep back — rather than overnight. This means losing the yurt overnight at Altyn Arashan and the stars. For S$311/person saved, this is the main sacrifice.
+          </div>
+        </div>
+      </div>
+
+      <div class="route-option">
+        <div class="route-header">
+          <h3>🔵 Route Option 2: Karakol Deep Dive</h3>
+          <span class="badge badge-amber">Best if Song-Kul Feels Too Risky</span>
+        </div>
+        <div class="route-body">
+          <p>Skip Song-Kul entirely. Drive straight from Bishkek to Karakol and spend 6 nights in the Karakol zone. More depth, more hiking, less logistics. Especially good if the group prefers certainty over the Song-Kul uncertainty.</p>
+
+          <table class="day-table">
+            <thead>
+              <tr><th>Date</th><th>Where</th><th>Activity</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="day-num">May 23–24</td><td><strong>Almaty → Bishkek</strong></td><td>Half-day Almaty. Cross border, arrive Bishkek.</td></tr>
+              <tr><td class="day-num">May 25</td><td><strong>Bishkek → Karakol</strong></td><td>Morning: Ala Archa gorge. Drive to Karakol via Issyk-Kul north shore (~6hrs total).</td></tr>
+              <tr><td class="day-num">May 26</td><td><strong>Jyrgalan</strong></td><td>Full day hike: Echki-Jailoo (6–8hrs). Afternoon horse riding.</td></tr>
+              <tr><td class="day-num">May 27</td><td><strong>Jyrgalan</strong></td><td>Taldy Gorge hike (5hrs). Different valley, waterfalls, old mine.</td></tr>
+              <tr><td class="day-num">May 28–29</td><td><strong>Altyn Arashan (2 nights)</strong></td><td>Day 1: Hike up (4hrs). Hot springs. Day 2: Upper valley hike toward glacier. Full relax. Stars.</td></tr>
+              <tr><td class="day-num">May 30</td><td><strong>Karakol + Bokonbaevo</strong></td><td>Jeep/hike down. Drive to Bokonbaevo for eagle demo. Issyk-Kul south shore yurt option.</td></tr>
+              <tr><td class="day-num">May 31 – Jun 1</td><td><strong>Return</strong></td><td>Karakol → Bishkek → Almaty → flight.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Pros:</strong> Deeper, more relaxed, guaranteed yurt experience, superb hiking.<br>
+          <strong>Cons:</strong> Miss Song-Kul's nomadic highland experience entirely, which is genuinely unique.</p>
+        </div>
+      </div>
+
+      <div class="route-option">
+        <div class="route-header">
+          <h3>🟡 Route Option 3: North + South (Internal Flight)</h3>
+          <span class="badge badge-amber">Option 2 Flights Only · Ambitious</span>
+        </div>
+        <div class="route-body">
+          <p>Compress Route Option 1 by one day, then fly Bishkek → Osh (~$40/person, 1hr) to spend 2 days in South Kyrgyzstan: Arslanbob walnut forest and Osh city.</p>
+          <p><strong>What you gain:</strong> Arslanbob is one of the world's largest natural walnut forests — a UNESCO biosphere reserve where trails wind through ancient trees, past waterfalls and shepherd settlements. Osh is Central Asia's second oldest city (claimed to be 3,000 years old), with Suleiman-Too (Solomon's Throne), a sacred mountain that's been a pilgrimage site since the Bronze Age.</p>
+          <p><strong>What you give up:</strong> One full hiking day in the north. The south is culturally fascinating but more gentle walking than epic hiking. <strong>Feasibility: 6/10</strong> — doable but slightly rushed. Recommended only if someone in the group specifically wants the Silk Road/cultural angle.</p>
+          <p><strong>Extra cost:</strong> ~S$80–100/person in internal flights.</p>
+          <p><strong>Overland north-south route:</strong> Not feasible in 9 days. The Bishkek → Osh road is 10–12 hours of mountain driving each way. You'd lose 2 full days just in transit.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== WILDLIFE ===== -->
+  <div class="section" id="wildlife">
+    <div class="section-label">The Wild Side</div>
+    <div class="section-title">Wildlife Guide</div>
+
+    <p>Late May to early June is one of the best times for wildlife in Kyrgyzstan — animals are active after winter, and the spring wildflowers bring out insects, birds, and mammals. Here's what you can realistically expect:</p>
+
+    <div class="wildlife-grid">
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🐿️</div>
+        <div>
+          <div class="wildlife-name">Marmots</div>
+          <div class="wildlife-detail">Everywhere at altitude. Large, fat, endearing rodents that stand upright on rocks and give sharp warning whistles. Song-Kul, Altyn Arashan, Jyrgalan ridges.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Certain</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🦅</div>
+        <div>
+          <div class="wildlife-name">Lammergeier (Bearded Vulture)</div>
+          <div class="wildlife-detail">One of the world's largest raptors, with a 2.7m wingspan. Identified by its wedge-shaped tail. Soars over gorges and rocky terrain. Spectacular in flight.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Very Likely</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🦅</div>
+        <div>
+          <div class="wildlife-name">Golden Eagle (in flight)</div>
+          <div class="wildlife-detail">Common over open steppe and high pasture. Different from the Bokonbaevo demonstration — these are fully wild birds hunting over Song-Kul and alpine areas.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Very Likely</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🦅</div>
+        <div>
+          <div class="wildlife-name">Golden Eagle (close up)</div>
+          <div class="wildlife-detail">Bokonbaevo demonstration with a working berkutchi (eagle hunter). Arranged activity, ~$10–15/person, 30–45 mins. One of Central Asia's great wildlife experiences.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Bookable</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🐐</div>
+        <div>
+          <div class="wildlife-name">Ibex (Siberian)</div>
+          <div class="wildlife-detail">Wild mountain goats with dramatic curved horns. Rocky cliff faces above treeline. Altyn Arashan upper valley and Ala Archa are your best chances.</div>
+          <div class="wildlife-chance"><span class="badge badge-amber">Possible</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🐎</div>
+        <div>
+          <div class="wildlife-name">Wild & Semi-Wild Horses</div>
+          <div class="wildlife-detail">Herds roam around Song-Kul and on open jailoo pastures. Not truly wild (owned by nomads) but free-ranging and impressive in large groups at sunset.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Certain (Song-Kul)</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🐦</div>
+        <div>
+          <div class="wildlife-name">Mountain Birds</div>
+          <div class="wildlife-detail">Snowfinches, Himalayan Griffon vultures, Eurasian Hoopoe, Red-billed Chough, Upland Buzzard, various pipits and larks at altitude. Late May is good for migrants.</div>
+          <div class="wildlife-chance"><span class="badge badge-green">Excellent Birding</span></div>
+        </div>
+      </div>
+      <div class="wildlife-item">
+        <div class="wildlife-emoji">🐺</div>
+        <div>
+          <div class="wildlife-name">Wolf (signs only)</div>
+          <div class="wildlife-detail">Wolves are present around Song-Kul and in remote valleys — you may hear them at night from your yurt. Tracks in mud the next morning. Unlikely to see directly.</div>
+          <div class="wildlife-chance"><span class="badge badge-amber">Signs Possible</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">🐆 Snow Leopard — The Honest Answer</div>
+      <p>Kyrgyzstan has an estimated 150–300 snow leopards. They exist in the mountains you'll be walking through — particularly around Ala Archa and the high valleys above Altyn Arashan. However, seeing one is extremely rare even for dedicated wildlife researchers who spend weeks specifically searching. Without a major detour to Sarychat-Eertash Reserve (a 2-day detour minimum) and luck, it's not a realistic expectation. You're far more likely to find paw prints in snow or fresh scrapes on rocks (which is still exciting). Consider it a bonus if it happens, not a target.</p>
+    </div>
+  </div>
+
+  <!-- ===== BUDGET ===== -->
+  <div class="section" id="budget">
+    <div class="section-label">Money</div>
+    <div class="section-title">Budget Breakdown</div>
+
+    <p>All figures in SGD per person. Assumes group of 6 sharing vehicle costs. Exchange rate: 1 USD ≈ S$1.35. Kyrgyzstan is inexpensive by almost any standard.</p>
+
+    <table class="budget-table">
+      <thead>
+        <tr><th>Category</th><th>Daily Estimate</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Driver-guide + minivan</strong></td>
+          <td>~S$23–28/day</td>
+          <td>$150–180/day for minivan + guide, split 6 ways. Includes all in-country driving. This is the single best investment you'll make.</td>
+        </tr>
+        <tr>
+          <td><strong>Accommodation</strong></td>
+          <td>~S$20–35/day</td>
+          <td>Yurts $25–35/pax incl. dinner + breakfast. Guesthouses in Karakol/Bishkek ~$20/pax. Almaty airport hotel ~$40–60 total per room shared.</td>
+        </tr>
+        <tr>
+          <td><strong>Food (non-yurt days)</strong></td>
+          <td>~S$12–18/day</td>
+          <td>Cafés and local restaurants are very cheap. A full meal is $3–7/person. Budget $15–18 for a day when meals aren't included.</td>
+        </tr>
+        <tr>
+          <td><strong>Activities</strong></td>
+          <td>~S$10–20/day</td>
+          <td>Eagle demo ~$15, horse riding 2hrs ~$15–20, national park entrance ~$3–5, Shymbulak cable car ~$15. Most hiking is free.</td>
+        </tr>
+        <tr>
+          <td><strong>Almaty costs</strong></td>
+          <td>~S$40–60 total</td>
+          <td>One-off: hotel, meals, optional cable car. Kazakhstan is more expensive than Kyrgyzstan.</td>
+        </tr>
+        <tr>
+          <td><strong>Miscellaneous</strong></td>
+          <td>~S$10/day</td>
+          <td>Water, snacks, tips, SIM card (~$5 total for a Kyrgyz data SIM).</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td><strong>Total per person (9 days, ex-flights)</strong></td>
+          <td><strong>~S$650–900</strong></td>
+          <td>Well within your S$120/day budget. You could spend more on a nicer Altyn Arashan yurt or a private eagle session.</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="alert alert-ok">
+      <div class="alert-title">💵 Currency Note</div>
+      <p>Bring <strong>USD cash</strong> — it's the easiest currency to exchange throughout Kyrgyzstan. Euros and GBP also work in Bishkek and Karakol. Card acceptance is limited outside major towns. Exchange at money changers (better rates than banks). ATMs exist in Bishkek and Karakol only. Recommended: bring $300–400 USD cash per person for the whole trip.</p>
+    </div>
+  </div>
+
+  <!-- ===== PRACTICALITIES ===== -->
+  <div class="section" id="practicalities">
+    <div class="section-label">Before You Go</div>
+    <div class="section-title">Practicalities &amp; Need-to-Knows</div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-card-label">Visas (Summary)</div>
+        Singapore, France, Japan: nothing to do. <strong>HK passport: apply for Kyrgyzstan e-Visa at evisa.e-gov.kg</strong>, 3 days processing, ~$15. Do this at least 2 weeks before travel.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Weather (Late May/June)</div>
+        Bishkek/Karakol: 18–24°C days. Song-Kul nights: 2–8°C. Always pack a warm layer and rain shell. Afternoons can bring brief thunderstorms at altitude. Mornings are often perfect.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">What to Pack</div>
+        Hiking boots (waterproof). Trekking poles (optional but useful for scree). Sleeping bag liner (yurts provide blankets but liners add warmth). Headlamp. Sunscreen (intense UV at altitude). Insect repellent.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Driver-Guide Booking</div>
+        Best sources: <strong>CBT Kyrgyzstan</strong> (cbtkyrgyzstan.kg) — the national community-based tourism network. They vet operators for ethical standards. Book 4–6 weeks ahead. Also: Destination Jyrgalan (for Jyrgalan-specific activities).
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Language</div>
+        Kyrgyz and Russian. English is spoken in Bishkek, Karakol guesthouses, and CBT-affiliated guides. In rural areas and at Song-Kul, Russian is more useful — your driver-guide handles this.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Food Culture</div>
+        Mutton-heavy. Classics: <em>beshbarmak</em> (boiled meat on flat noodles, the national dish), <em>lagman</em> (pulled noodle soup), <em>samsa</em> (baked pastry), <em>shashlik</em> (grilled meat skewers). Kumiss (fermented mare's milk) at yurt stays — try it, it's an acquired taste. All in group eat meat: no issues.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Connectivity</div>
+        Buy a <strong>Beeline or Megacom SIM</strong> at Bishkek airport or in town (~$5 for data). Works well in Bishkek, Karakol, and on main roads. Zero signal at Song-Kul and Altyn Arashan. Plan accordingly — download offline maps (maps.me or OSMAnd for Kyrgyzstan).
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Altitude</div>
+        You start at ~1,600m (Issyk-Kul) and will reach 3,000–3,400m at Song-Kul and passes. At this altitude, some people feel slightly breathless or headachy the first day. Stay hydrated, don't rush. None of you have altitude issues, so this is a precaution rather than a concern.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Ethical Considerations</div>
+        Always book through CBT or vetted operators. Ask to see horses before committing to a ride — look for healthy weight, no saddle sores, appropriate rest. Tip generously at yurt camps (most income goes directly to families). Ask before photographing people. Don't bargain aggressively — prices are already very low.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Road Conditions</div>
+        The main Bishkek–Karakol road (south of Issyk-Kul) is fully paved. Song-Kul approach is 80km of dirt track — fine for a 4WD, uncomfortable for 2+ hours. Altyn Arashan track is rough. Your minivan will be a Russian UAZ Bukhanka or Toyota Hiace — both handle these roads. Allow extra time for all mountain driving.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Medical / First Aid</div>
+        Bring personal medications and a basic first aid kit. Nearest decent hospital: Karakol or Bishkek. Carry ibuprofen, blister treatment, rehydration salts. Travel insurance that covers trekking and emergency evacuation is strongly recommended.
+      </div>
+      <div class="tip-card">
+        <div class="tip-card-label">Almaty Airport Transfer</div>
+        Almaty Intl Airport is ~30min from the city centre by taxi (~$10–15). Pre-book the morning Almaty → Bishkek transfer through your guesthouse or a local agency (~$20–30/person for shared taxi to border, or $80–100 total for private van).
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div style="background: var(--slate); color: rgba(255,255,255,0.5); padding: 32px; text-align: center; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; margin-top: 40px;">
+  KYRGYZSTAN TRIP PLANNING BRIEF · GROUP OF 6 · MAY–JUNE 2026 · DRAFT<br>
+  <span style="color:rgba(255,255,255,0.3)">Prepared May 2026 · Verify all visa requirements independently before booking</span>
+</div>
+
+</body>
+</html>
